@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style-form.css' %}">
+    <meta charset="utf-8" />
+</head>
+
+
+
+
+<h1>RECOLTER MONTREAL</h1>
+<h2>- FORMULAIRE POUR PARTICIPANTS -</h2>
+
+
+{% if envoi %}<p class="validation">Votre formulaire a bien été envoyé !</p>{% endif %}
+
+
+{% if not envoi %}
+
+
+<h3>SAISON 2017</h3>
+<p>Merci de bien vouloir prendre quelques minutes pour répondre à ce questionnaire.</p><p> Ces données confidentielles et anonymes permettront aux organismes oeuvrant en agriculture urbaine de mieux comprendre et connaître les participants aux activités, tout en permettant de dresser un portrait global de ce domaine d’activité à Montréal.</p><p>Pour en savoir plus sur cette démarche d’évaluation collective, visitez la plateforme web « Récolter Montréal »
+</p>
+<p>IMPORTANT : Veuillez remplir ce questionnaire une seule fois durant la saison 2017!</p>
+
+
+
+<form action="/questionnairequalitatif/" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+    </div>
+    {% endfor %}
+    <p><input type="submit" value="Envoyer le questionnaire" /></p>
+</form>
+
+{% endif %}
