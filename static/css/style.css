@@ -4,6 +4,8 @@ body{
     text-align: center;
 }
 
+
+
 /* Bootstrap navigation bar at the top */
 .container-fluid {
     background-color: #ebe5d5;
@@ -69,3 +71,4 @@ h2{
 .chiffre{
     font-size: 40px;
 }
+
