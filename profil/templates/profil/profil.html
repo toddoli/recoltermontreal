@@ -23,7 +23,7 @@
 <p>Bienvenue sur votre plateforme d’évaluation collective!</p><p>Nous vous invitons à créer votre profil d’organisme lors de votre première visite sur la plateforme « Récolter Montréal ». Vos réponses nous permettront de mieux cerner les différents acteurs communautaires et organisationnels dans le milieux de l’agriculture urbaine à Montréal. Ces données resteront confidentielles et anonymes et serviront à l’évaluation de vos activités, dont les résultats vous seront disponibles à la fin de la saison. Colligées avec les données de l’ensemble des organismes participants, elles serviront aussi à dresser un portait des retombées de l’agriculture urbaine à Montréal qui sera accessible au public sur la vitrine principale de la plateforme.</p>
 </p>
 
-<form action="/profil" method="post">
+<form action="/profil/" method="post">
     {% csrf_token %}
     {% for field in form2 %}
     <div class="fieldWrapper">

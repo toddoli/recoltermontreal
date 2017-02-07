@@ -6,6 +6,6 @@ from profil import views
 
 urlpatterns = [
     url(r'^profil/$', views.profil, name='profil'),
-    url(r'^resultats2/$', views.resultats, name='resultats'),
+    url(r'^resultats/$', views.resultats, name='resultats'),
 
 ]
