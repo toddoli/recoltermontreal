@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'questionnairequantitatif',
     'authentification',
     'profil',
-
+    'espaceperso',
+    'registration',
 ]
 
 
@@ -139,3 +140,6 @@ LOCATION_FIELD = {
 }
 
 LOGIN_URL = '/connexion/'
+
+
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.

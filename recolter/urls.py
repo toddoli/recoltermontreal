@@ -25,5 +25,7 @@ urlpatterns = [
     url(r'', include('profil.urls')),
     url(r'', include('questionnairequalitatif.urls')),
     url(r'', include('questionnairequantitatif.urls')),
+    url(r'', include('espaceperso.urls')),
+
 
 ]

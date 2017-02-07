@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <head>
     <title>R&eacute;colter Montr&eacute;al</title>
     <!-- BOOTSTRAP -->
@@ -8,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <!-- Calls code to display the table-->
-    <script type="text/javascript" src="displaysheet.js"></script>
+    <!--<script type="text/javascript" src="displaysheet.js"></script>-->
     <script src="https://spreadsheets.google.com/feeds/cells/<?php echo $GSHEETS_ID_ANNUAL_STATS ?>/1/public/values?alt=json-in-script&range=<?php echo $CELLS_RANGE; ?>&callback=doData"></script>
     <style type="text/css">
         @media (max-width: 767px) {
@@ -19,12 +18,13 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 
 <body>
-
+{% load static %}
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -38,24 +38,68 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://www.recoltermontrealdrupal.ca/?q=node/add/survey-private">Entrer les donn&eacute;es</a></li>
-                <li><a href="http://www.recoltermontrealdrupal.ca/?q=user/register">Cr&eacute;er un compte</a></li>
-                <li><a href="http://www.recoltermontrealdrupal.ca/?q=user">Se connecter</a></li>
+                <li><a href="/questionnairequalitatif">Participer au sondage</a></li>
+                <li><a href="/questionnairequantitatif">Entrer les donn&eacute;es</a></li>
+                <li><a href="/creercompte">Cr&eacute;er un compte</a></li>
+                <li><a href="/espaceperso" target="_self">Se connecter</a></li>
                 <li><a href="#">Aide</a></li>
             </ul>
         </div>
     </div>
 </nav>
-
-
-
 <div id="main-title">
     R&eacute;colter Montr&eacute;al
     <div id="sub-title">
         Visualiser et comprendre les retomb&eacute;es de l'agriculture urbaine
     </div>
 </div>
-{% load static %}
-<div><img src="{% static 'questionnairequalitatif/header.png' %}" /></div>
+<div id="results">
+    <h1>En Chiffres</h1>
+    <h2>Ateliers et activités éducatives</h2>
+    <div class="row">
+        <!-- Available images: culture.png people.png time.png sales.png water.png compost.png -->
+
+        {% load static %}
+
+        <div class="col-md-3"><img src="{% static "img/icons/people.png" %}"/>  <span class="chiffre">{{nombre_educateurs_avg}}</span> <BR /><span class="unite">Participants aux ateliers et aux activités éducatives</div>
+        <div class="col-md-3"><img src="{% static "img/icons/people.png" %}"/>  <span class="chiffre">{{nombre_benevoles_avg}}</span> <BR /><span class="unite">Bénévoles impliqués dans l’organisation et la coordination des activités</div>
+        <div class="col-md-3"><img src="{% static "img/icons/culture.png" %}"/>  <span class="chiffre">{{nombre_sujets_avg}}</span> <BR /><span class="unite">Ateliers et activités éducatives organisés durant le marché</span></div>
+        <div class="col-md-3"><img src="{% static "img/icons/people.png " %}"/>  <span class="chiffre">{{nombre_heures_activite_avg}}</span> <BR /><span class="unite">Participants présents aux ateliers ou activités de cuisine</div>
+    </div>
+    <BR />
+    <h2>Jardinage  collectif</h2>
+    <div class="row">
+        <div class="col-md-4"><img src="{% static "img/icons/compost.png" %}"/>  <span class="chiffre">20k</span> <BR /><span class="unite">m&#8322; total de jardin</div>
+        <div class="col-md-4"><img src="{% static "img/icons/people.png" %}"/>  <span class="chiffre">150</span> <BR /><span class="unite">Participants aux sessions de jardinage collectif</div>
+        <div class="col-md-4"><img src="{% static "img/icons/people.png" %}"/>  <span class="chiffre">500</span> <BR /><span class="unite">Bénévoles aux comités du jardin (CA, comités variés ou autres)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><img src="{% static "img/icons/culture.png"  %}"/>  <span class="chiffre">12k</span> <BR /><span class="unite">KG de fruits et des légumes récoltés</div>
+        <div class="col-md-6"><img src="{% static "img/icons/compost.png"%}"/>  <span class="chiffre">100k</span> <BR /><span class="unite">m&#8322; de jardin en production</div>
+    </div>
+    <BR />
+    <h2>Production  de semis</h2>
+    <div class="row">
+        <div class="col-md-12"><img src="{% static "img/icons/culture.png" %}"/>  <span class="chiffre">400</span> <BR /><span class="unite">Espèces/variétés de plantules produites</div>
+    </div>
+    <BR />
+    <h2>Activités de marché fermier</h2>
+    <!-- Chiffres -->
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3"><img src="{% static "img/icons/people.png"%}"/>  <span class="chiffre">30</span> <BR /><span class="unite">Bénévoles impliqués dans l’organisation et la coordination du marché</div>
+        <div class="col-md-3"><img src="{% static "img/icons/time.png"%}"/>  <span class="chiffre">40</span> <BR /><span class="unite">Heures de bénévolat requises pour l’organisation et la coordination du marché </div>
+        <div class="col-md-3"></div>
+    </div>
+    <!-- Benefices -->
+    <div class="row">
+        <div class="col-md-3"><img src="{% static "img/icons/sales.png"%}"/>  <span class="chiffre">2k</span> <BR /><span class="unite">Légumes</div>
+        <div class="col-md-3"><img src="{% static "img/icons/sales.png"%}"/>  <span class="chiffre">3k</span> <BR /><span class="unite">Fruits</div>
+        <div class="col-md-3"><img src="{% static "img/icons/sales.png"%}"/>  <span class="chiffre">40k</span> <BR /><span class="unite">Jus</div>
+        <div class="col-md-3"><img src="{% static "img/icons/sales.png"%}"/>  <span class="chiffre">2.5k</span> <BR /><span class="unite">Alcools</div>
+    </div>
+</div>
+
 </body>
 </html>
+

@@ -2,9 +2,11 @@
 from django.db import models
 from .forms import ProfilForm
 from django.shortcuts import render
+from .models import Profil
+from django.db.models import Avg
+from django.contrib.auth.decorators import login_required
 
-
-
+@login_required(redirect_field_name='rediriger_vers')
 def profil(request):
     # Construire le formulaire, soit avec les données postées,
     # soit vide si l'utilisateur accède pour la première fois
@@ -23,4 +25,6 @@ def profil(request):
         form2.save()
     return render(request, 'profil/profil.html', locals())
 
-
+def resultats(request):
+    personnes=Profil.objects.all().aggregate(Avg('personnes_impliquees'))
+    return render(request,'profil/Resultats.html',  {'Resultats personnes': personnes} )

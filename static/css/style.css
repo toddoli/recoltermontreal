@@ -1,0 +1,71 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background: url(../img/header.png) no-repeat center top, url(../img/background.png) fixed;
+    text-align: center;
+}
+
+/* Bootstrap navigation bar at the top */
+.container-fluid {
+    background-color: #ebe5d5;
+    box-shadow: 10px 10px 5px #9c988c;
+}
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover{
+    color: #604c2f;
+}
+.navbar-default .navbar-brand, .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a{
+    color: #456a70;
+}
+
+
+#main-title{
+    position: absolute;
+    top: 70px;
+    width: 100%;
+    text-align: center;
+    font-size: 57px;
+    color: #456a70;
+}
+
+#sub-title{
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    text-align: center;
+    font-size: 23px;
+    color: white;
+}
+
+h1{
+    color: #456A70;
+}
+
+h2{
+    color: #9DABAB;
+}
+
+#results{
+    position: absolute;
+    top: 598px;
+    left: 10%;
+    right: 10%;
+    text-align:center;
+}
+
+.row{
+    margin-top: 40px;
+    margin-bottom: 40px;
+//font-size: 40px;
+}
+
+.chiffre{
+    color: #706e6f;
+}
+
+.unite{
+    color: #71b3c1;
+    font-size: 15px;
+}
+
+.chiffre{
+    font-size: 40px;
+}

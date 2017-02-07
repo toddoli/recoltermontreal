@@ -2,7 +2,6 @@
 from .forms import QualitatifForm
 from django.shortcuts import render
 
-
 def questionnaire(request):
     # Construire le formulaire, soit avec les données postées,
     # soit vide si l'utilisateur accède pour la première fois
@@ -20,4 +19,3 @@ def questionnaire(request):
         envoi = True
         form.save()
     return render(request, 'questionnairequalitatif/questionnaire.html', locals())
-

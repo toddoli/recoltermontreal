@@ -1,7 +1,9 @@
 #-*- coding: utf-8 -*-
 from django.shortcuts import render
 from .forms import QuantitativeForm
+from django.contrib.auth.decorators import login_required
 
+@login_required(redirect_field_name='rediriger_vers')
 def questionnaire(request):
     # Construire le formulaire, soit avec les données postées,
     # soit vide si l'utilisateur accède pour la première fois

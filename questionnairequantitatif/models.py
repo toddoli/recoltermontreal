@@ -2,8 +2,6 @@
 
 from django.db import models
 
-
-
 class Organisme(models.Model):
     name = models.CharField(max_length=1000)
     order = models.CharField(max_length=3)

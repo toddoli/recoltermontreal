@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+
+<h1>Creer un compte</h1>
+
+
+{% if error %}
+<p><strong>cet utilisateur existe déjà</strong></p>
+{% endif %}
+
+{% if envoi %}<p class="validation">Votre compte a bien été crée ! Cliquez  <a href="/connexion">ici</a> pour vous  connecter</p>{% endif %}
+
+{% if user.is_authenticated %}
+<p class="validation">Votre compte a bien été crée ! Cliquez  <a href="/connexion">ici</a> pour vous  connecter</p>
+{% else %}
+<h3>Si vous avez déja crée un compte, veuillez cliquer sur  <a href="/connexion">se connecter</a> et rentrer vos identifiants</h3>
+<form method="post" action="/creercompte/">
+    {% csrf_token %}
+
+    <ul>
+    {{ form5.as_p }}
+    </ul>
+    <input type="submit" value="Creer un compte" />
+
+</form>
+{% endif %}
+
+</body>
+
