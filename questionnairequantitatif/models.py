@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from django.db import models
 
@@ -38,4 +38,7 @@ class Questionnairequantitatif(models.Model):
     date = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name="Date d'envoi")
 
     def __str__(self):              # __unicode__ on Python 2
-        return self.date.strftime(' Le %d %b %Y à %Hh %Mm %Ss %Z')
+        if self.date is None:
+            return 'N/A'
+        else:
+            return self.date.strftime(' Le %d %b %Y à %Hh %Mm %Ss %Z')
