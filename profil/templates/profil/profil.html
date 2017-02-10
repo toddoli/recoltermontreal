@@ -2,18 +2,23 @@
 
 <head>
     {% load static %}
+
     <link rel="stylesheet" href="{% static 'css/style-form.css' %}">
     <meta charset="utf-8" />
 </head>
 
-
+<body>
+<div class="background"></div>
 
 
 <h1>RECOLTER MONTREAL</h1>
 <h2>- - FORMULAIRE PROFIL D’ORGANISME --</h2>
 
 
-{% if envoi %}<p class="validation">Votre formulaire a bien été envoyé !</p>{% endif %}
+{% if envoi %}<p class="validation">Votre formulaire a bien été envoyé !</p>
+<p class="validation"><a href="/espaceperso/">Cliquez ici pour retourner à votre espace personnel</a></p>
+
+{% endif %}
 
 
 {% if not envoi %}
@@ -34,3 +39,4 @@
     <p><input type="submit" value="Envoyer le questionnaire" /></p>
 </form>
 {% endif %}
+</body>

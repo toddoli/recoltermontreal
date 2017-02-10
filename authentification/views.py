@@ -9,6 +9,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.views import login
 from questionnairequantitatif.models import Questionnairequantitatif
 from profil.models import Profil
+from django.contrib.auth.models import User
+import sys
 
 
 
@@ -49,8 +51,6 @@ def deconnexion(request):
 def index(request):
     data = Questionnairequantitatif.objects.all()
     poids_total_avg = str(Questionnairequantitatif.objects.all().aggregate(Avg('poids_total'))['poids_total__avg'])
-    nom_organisme_avg = str(Questionnairequantitatif.objects.all().aggregate(Avg('nom_organisme'))['nom_organisme__avg'])
-    poids_total_avg = str(Questionnairequantitatif.objects.all().aggregate(Avg('poids_total'))['poids_total__avg'])
     nombre_varietes_avg = str(Questionnairequantitatif.objects.all().aggregate(Avg('nombre_varietes'))['nombre_varietes__avg'])
     nombre_personnes_toute_activite_avg = str(Questionnairequantitatif.objects.all().aggregate(Avg('nombre_personnes_toute_activite'))['nombre_personnes_toute_activite__avg'])
     nombre_educateurs_avg = str(Questionnairequantitatif.objects.all().aggregate(Avg('nombre_educateurs'))['nombre_educateurs__avg'])
@@ -88,30 +88,31 @@ def index(request):
     adresse_jardin_avg=str(Profil.objects.all().aggregate(Avg('adresse_jardin'))['adresse_jardin__avg'])
     city_avg=str(Profil.objects.all().aggregate(Avg('city'))['city__avg'])
 
-    return render_to_response('index.html', {'data': data, 'poids_total_avg': poids_total_avg, 'nombre_varietes_avg' : nombre_varietes_avg, 'nombre_personnes_toute_activite_avg' : nombre_personnes_toute_activite_avg, 'nombre_educateurs_avg' : nombre_educateurs_avg, 'nombre_heures_activite_avg' : nombre_heures_activite_avg, 'nombre_jardiniers_avg' : nombre_jardiniers_avg, 'nombre_heures_jardins_avg' : nombre_heures_jardins_avg, 'nombre_benevoles_avg' : nombre_benevoles_avg, 'nombre_heures_benevoles_avg' : nombre_heures_benevoles_avg, 'ca_total_avg' : ca_total_avg, 'ca_agriculture_urbaine_avg' : ca_agriculture_urbaine_avg, 'nombre_paniers_avg' : nombre_paniers_avg, 'prix_panier_avg' : prix_panier_avg, 'semis_avg' : semis_avg, 'ca_semis_avg' : ca_semis_avg, 'nombre_semis_rustiques_avg' : nombre_semis_rustiques_avg, 'nombre_ruches_avg' : nombre_ruches_avg, 'poids_miel_avg' : poids_miel_avg, 'poids_composte_avg' : poids_composte_avg, 'poids_pluie_avg' : poids_pluie_avg, 'nombre_heures_enfant_avg' : nombre_heures_enfant_avg, 'nombre_heures_aines_avg' : nombre_heures_aines_avg, 'nombre_sujets_avg' : nombre_sujets_avg,'current_user_avg' : current_user_avg, 'nom_organisme_avg' : nom_organisme_avg, 'nom_referent_avg' : nom_referent_avg, 'courriel_avg' : courriel_avg, 'adresse_avg' : adresse_avg, 'mandat_avg' : mandat_avg, 'objectif_avg' : objectif_avg, 'personnes_impliquees_avg' : personnes_impliquees_avg, 'personnes_employees_avg' : personnes_employees_avg, 'personnes_moins_de_25_avg' : personnes_moins_de_25_avg, 'categories_avg' : categories_avg, 'retombees_avg' : retombees_avg, 'superficie_avg' : superficie_avg, 'adresse_jardin_avg' : adresse_jardin_avg, 'city_avg' : city_avg,})
+    return render_to_response('index.html', {'data': data, 'poids_total_avg': poids_total_avg, 'nombre_varietes_avg' : nombre_varietes_avg, 'nombre_personnes_toute_activite_avg' : nombre_personnes_toute_activite_avg, 'nombre_educateurs_avg' : nombre_educateurs_avg, 'nombre_heures_activite_avg' : nombre_heures_activite_avg, 'nombre_jardiniers_avg' : nombre_jardiniers_avg, 'nombre_heures_jardins_avg' : nombre_heures_jardins_avg, 'nombre_benevoles_avg' : nombre_benevoles_avg, 'nombre_heures_benevoles_avg' : nombre_heures_benevoles_avg, 'ca_total_avg' : ca_total_avg, 'ca_agriculture_urbaine_avg' : ca_agriculture_urbaine_avg, 'nombre_paniers_avg' : nombre_paniers_avg, 'prix_panier_avg' : prix_panier_avg, 'semis_avg' : semis_avg, 'ca_semis_avg' : ca_semis_avg, 'nombre_semis_rustiques_avg' : nombre_semis_rustiques_avg, 'nombre_ruches_avg' : nombre_ruches_avg, 'poids_miel_avg' : poids_miel_avg, 'poids_composte_avg' : poids_composte_avg, 'poids_pluie_avg' : poids_pluie_avg, 'nombre_heures_enfant_avg' : nombre_heures_enfant_avg, 'nombre_heures_aines_avg' : nombre_heures_aines_avg, 'nombre_sujets_avg' : nombre_sujets_avg,'current_user_avg' : current_user_avg, 'nom_referent_avg' : nom_referent_avg, 'courriel_avg' : courriel_avg, 'adresse_avg' : adresse_avg, 'mandat_avg' : mandat_avg, 'objectif_avg' : objectif_avg, 'personnes_impliquees_avg' : personnes_impliquees_avg, 'personnes_employees_avg' : personnes_employees_avg, 'personnes_moins_de_25_avg' : personnes_moins_de_25_avg, 'categories_avg' : categories_avg, 'retombees_avg' : retombees_avg, 'superficie_avg' : superficie_avg, 'adresse_jardin_avg' : adresse_jardin_avg, 'city_avg' : city_avg,})
 
 
 
 def creercompte(request):
-    if request.method == "POST":
-       form5 = UserCreateForm(request.POST)
-       if form5.is_valid():
-           form5.save()
-           username = form5.cleaned_data["username"]
-           password = form5.cleaned_data["password1"]
-           user = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
-           if user:
-               error = False
-                # Si l'objet renvoyé n'est pas None
-                # login(request, user) # nous connectons l'utilisateur
-                # return redirect('/espaceperso')
-           else: # sinon une erreur sera affichée
-               error = True
-
-
+    logged = False
+    error = False
+    success = False
+    form5 = ""
+    if request.user.is_authenticated():
+        logged = True
     else:
-        form5 = UserCreateForm()
-
-    return render(request, 'registration/registration_form.html', locals())
+        if request.method == "POST":
+            form5 = UserCreateForm(request.POST)
+            if form5.is_valid():
+                form5.save()
+                username = form5.cleaned_data["username"]
+                password = form5.cleaned_data["password1"]
+                user2 = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
+                if user2:
+                    success = True
+                else:
+                    error = True
+        else:
+                form5 = UserCreateForm()
+    return render(request, 'registration/registration_form.html', {'form5': form5, 'logged': logged, 'success': success, 'error': error})
 
 

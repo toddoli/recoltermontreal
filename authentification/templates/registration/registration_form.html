@@ -4,33 +4,38 @@
     <meta charset="utf-8" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style-form.css' %}">
+
+
 
 </head>
 <body>
+<div class="background"></div>
 
 <h1>Creer un compte</h1>
 
 
-{% if error %}
-<p><strong>cet utilisateur existe déjà</strong></p>
-{% endif %}
+{% if logged %}
+<p><strong>Vous êtes déja connecté(e) !!</strong>
+</p>
+<a href="/espaceperso">Retour à votre espace personnel</a>
 
-{% if envoi %}<p class="validation">Votre compte a bien été crée ! Cliquez  <a href="/connexion">ici</a> pour vous  connecter</p>{% endif %}
-
-{% if user.is_authenticated %}
-<p class="validation">Votre compte a bien été crée ! Cliquez  <a href="/connexion">ici</a> pour vous  connecter</p>
+{% elif error %}
+    <p><strong>Erreur dans la création du compte</strong></p>
+{% elif success %}
+            <p class="validation">Votre compte a bien été crée ! Cliquez  <a href="/connexion">ici</a> pour vous  connecter</p>
 {% else %}
-<h3>Si vous avez déja crée un compte, veuillez cliquer sur  <a href="/connexion">se connecter</a> et rentrer vos identifiants</h3>
-<form method="post" action="/creercompte/">
-    {% csrf_token %}
+            <h3>Si vous avez déja crée un compte, veuillez cliquer sur  <a href="/connexion">se connecter</a> et rentrer vos identifiants</h3>
+            <form class="large" method="post" action="/creercompte/">
+            {% csrf_token %}
+            <ul>
+            {{ form5.as_p }}
+            </ul>
+            <input type="submit" value="Créer un compte" />
+            </form>
+            <a href="/index">Retour à la page d'acceuil</a>
 
-    <ul>
-    {{ form5.as_p }}
-    </ul>
-    <input type="submit" value="Creer un compte" />
-
-</form>
 {% endif %}
 
 </body>

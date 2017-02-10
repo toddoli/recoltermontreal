@@ -14,10 +14,13 @@ def questionnaire(request):
     # Cette méthode renvoie False s'il n'y a pas de données
     # dans le formulaire ou qu'il contient des erreurs.
     if form.is_valid():
-         # Ici nous pouvons traiter les données du formulaire
 
-         # Nous pourrions ici envoyer l'e-mail grâce aux données
-         # que nous venons de récupérer
+        obj = form.save(commit=False)
+        obj.current_user = request.user
+        obj.save()
+        # Ici nous pouvons traiter les données du formulaire
+        # Nous pourrions ici envoyer l'e-mail grâce aux données
+        # que nous venons de récupérer
         envoi = True
-        form.save()
+
     return render(request, 'questionnairequantitatif/questionnaire.html', locals())

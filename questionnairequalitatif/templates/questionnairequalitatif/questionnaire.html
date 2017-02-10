@@ -13,7 +13,10 @@
 <h2>- FORMULAIRE POUR PARTICIPANTS -</h2>
 
 
-{% if envoi %}<p class="validation">Votre formulaire a bien été envoyé !</p>{% endif %}
+{% if envoi %}
+<p class="validation">Votre formulaire a bien été envoyé !</p>
+<p class="validation"><a href="/index/">Cliquez ici pour retourner à la page d'acceuil</a></p>
+{% endif %}
 
 
 {% if not envoi %}
