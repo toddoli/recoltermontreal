@@ -1,31 +1,34 @@
 <!DOCTYPE html>
-
-<head>
-    <meta charset="utf-8" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    {% load static %}
-
-    <link rel="stylesheet" href="{% static 'css/style-form.css' %}">
+{% load static %}
+{% include "headindex.html" %}
 
 
+<body class="withoutbg">
 
-</head>
-<body>
 <div class="background"></div>
 
-<h1>Creer un compte</h1>
 
 
 {% if logged %}
+{% include "navbarperso.html" %}
+<h1>Creer un compte</h1>
 <p><strong>Vous êtes déja connecté(e) !!</strong>
 </p>
-<a href="/espaceperso">Retour à votre espace personnel</a>
 
 {% elif error %}
+{% include "navbar.html" %}
+<h1>Creer un compte</h1>
+
     <p><strong>Erreur dans la création du compte</strong></p>
 {% elif success %}
+{% include "navbar.html" %}
+<h1>Creer un compte</h1>
+
             <p class="validation">Votre compte a bien été crée ! Cliquez  <a href="/connexion">ici</a> pour vous  connecter</p>
 {% else %}
+{% include "navbar.html" %}
+<h1>Creer un compte</h1>
+
             <h3>Si vous avez déja crée un compte, veuillez cliquer sur  <a href="/connexion">se connecter</a> et rentrer vos identifiants</h3>
             <form class="large" method="post" action="/creercompte/">
             {% csrf_token %}
@@ -34,7 +37,6 @@
             </ul>
             <input type="submit" value="Créer un compte" />
             </form>
-            <a href="/index">Retour à la page d'acceuil</a>
 
 {% endif %}
 

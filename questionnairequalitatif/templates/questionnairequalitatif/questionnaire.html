@@ -1,12 +1,11 @@
 <!DOCTYPE html>
+{% load static %}
+{% include "headindex.html" %}
 
-<head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style-form.css' %}">
-    <meta charset="utf-8" />
-</head>
 
-<body>
+<body class="withoutbg">
+{% include "navbar.html" %}
+
 <div class="background">
 </div>
 <h1>RECOLTER MONTREAL</h1>
@@ -15,7 +14,6 @@
 
 {% if envoi %}
 <p class="validation">Votre formulaire a bien été envoyé !</p>
-<p class="validation"><a href="/index/">Cliquez ici pour retourner à la page d'acceuil</a></p>
 {% endif %}
 
 

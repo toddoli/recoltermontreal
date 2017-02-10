@@ -1,34 +1,32 @@
-<!DOCTYPE html>
+{% load static %}
 
-<head>
-    <meta charset="utf-8" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    {% load static %}
+{% include "headindex.html" %}
 
-    <link rel="stylesheet" href="{% static 'css/style-form.css' %}">
 
-</head>
-<body>
+<body class="withoutbg">
+
 <div class="background"></div>
-<h1>Se connecter</h1>
-<h3>Si c'est la première fois que vous visitez ce site, veuillez <a href="/creercompte">Cr&eacute;er un compte</a> pour vous connecter</h3>
 
 
 {% if error %}
+{% include "navbar.html" %}
+<h1>Se connecter</h1>
+<h3>Si c'est la première fois que vous visitez ce site, veuillez <a href="/creercompte">Cr&eacute;er un compte</a> pour vous connecter</h3>
 <p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
-{% endif %}
-
-{% if user.is_authenticated %}
+{% elif user.is_authenticated %}
+{% include "navbarperso.html" %}
+<h1>Se connecter</h1>
 Vous êtes connecté, {{ user.username }} !
-<a href="/espaceperso">Retour à votre espace personnel</a>
 {% else %}
+{% include "navbar.html" %}
+<h1>Se connecter</h1>
+<h3>Si c'est la première fois que vous visitez ce site, veuillez <a href="/creercompte">Cr&eacute;er un compte</a> pour vous connecter</h3>
 <form class="large" method="post" action="/connexion/">
     {% csrf_token %}
     {{ form3.as_p }}
     <input type="submit" value="Se connecter" />
 </form>
-<a href="/index">Retour à la page d'acceuil</a>
-
 {% endif %}
 
 </body>
+

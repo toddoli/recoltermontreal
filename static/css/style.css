@@ -1,4 +1,4 @@
-body{
+body.withbackground{
     font-family: 'Montserrat', sans-serif;
     background: url(../img/header.png) no-repeat center top, url(../img/background.png) fixed;
     text-align: center;
@@ -8,14 +8,17 @@ body{
 
 /* Bootstrap navigation bar at the top */
 .container-fluid {
-    background-color: #ebe5d5;
-    box-shadow: 10px 10px 5px #9c988c;
+    background-color: white;
+    box-shadow: 0px 2px 15px rgb(162, 195, 206);
 }
 .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover{
     color: #604c2f;
 }
 .navbar-default .navbar-brand, .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a{
     color: #456a70;
+}
+.navbar-brand{
+    font-size:24px;
 }
 
 
