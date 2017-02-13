@@ -14,8 +14,8 @@ class Categorie(models.Model):
 
 class Profil(models.Model):
     current_user = models.OneToOneField(User)  # La liaison OneToOne vers le modèle User
-    nom_organisme = models.TextField(blank=True)
-    nom_referent = models.TextField(blank=True)
+    nom_organisme = models.TextField(verbose_name="1. Nom de l’organisme :", blank=True)
+    nom_referent = models.TextField(verbose_name="2. Nom des ou de la personne ressource qui s’impliquera dans le projet ' Récolter- Montréal ' pour la saison 2016:",blank=True)
     courriel = models.EmailField(blank=True)
     adresse = models.TextField(blank=True)
     mandat = models.TextField(blank=True)

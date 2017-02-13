@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -79,10 +78,6 @@ TEMPLATES = [
     },
 ]
 
-TEMPLATE_DIRS = (
-    PROJECT_PATH + '/templates/',
-)
-
 WSGI_APPLICATION = 'recolter.wsgi.application'
 
 
@@ -121,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr-FR'
 
-TIME_ZONE = 'Canada/Eastern'
+TIME_ZONE = 'America/Montreal'
 
 USE_I18N = True
 
