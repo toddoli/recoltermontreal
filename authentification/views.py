@@ -11,9 +11,6 @@ from questionnairequantitatif.models import Questionnairequantitatif
 from profil.models import Profil
 from django.contrib.auth.models import User
 import sys
-
-
-
 from django.db.models import Avg
 
 
@@ -83,7 +80,7 @@ def index(request):
     personnes_employees_avg=str(Profil.objects.all().aggregate(Avg('personnes_employees'))['personnes_employees__avg'])
     personnes_moins_de_25_avg=str(Profil.objects.all().aggregate(Avg('personnes_moins_de_25'))['personnes_moins_de_25__avg'])
     categories_avg=str(Profil.objects.all().aggregate(Avg('categories'))['categories__avg'])
-    retombees_avg=str(Profil.objects.all().aggregate(Avg('retombees'))['retombees__avg'])
+    retombees_avg=str(Profil.objects.all().aggregate(Avg('adresse_jardin'))['adresse_jardin__avg'])
     superficie_avg=str(Profil.objects.all().aggregate(Avg('superficie'))['superficie__avg'])
     adresse_jardin_avg=str(Profil.objects.all().aggregate(Avg('adresse_jardin'))['adresse_jardin__avg'])
     city_avg=str(Profil.objects.all().aggregate(Avg('city'))['city__avg'])

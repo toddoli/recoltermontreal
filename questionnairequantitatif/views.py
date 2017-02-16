@@ -4,6 +4,19 @@ from .forms import QuantitativeForm
 from django.contrib.auth.decorators import login_required
 
 @login_required(redirect_field_name='rediriger_vers')
+
+
+
+
+def afficherquestionnaire(request):
+
+
+
+    return render(request, 'questionnairequantitatif/questionnaire.html', locals())
+
+
+
+
 def questionnaire(request):
     # Construire le formulaire, soit avec les données postées,
     # soit vide si l'utilisateur accède pour la première fois

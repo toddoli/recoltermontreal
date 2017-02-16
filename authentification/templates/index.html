@@ -21,7 +21,7 @@
 
         {% load static %}
 
-        <div class="col-md-3"><img src="{% static "img/icons/people.png" %}"/>  <span class="chiffre">{{nombre_educateurs_avg}}</span> <BR /><span class="unite">Participants aux ateliers et aux activités éducatives</div>
+        <div class="col-md-3"><img src="{% static "img/icons/people.png" %}"/>  <span class="chiffre">{{nombre_personnes_toute_activite_avg}}</span> <BR /><span class="unite">Participants aux ateliers et aux activités éducatives</div>
         <div class="col-md-3"><img src="{% static "img/icons/people.png" %}"/>  <span class="chiffre">{{nombre_benevoles_avg}}</span> <BR /><span class="unite">Bénévoles impliqués dans l’organisation et la coordination des activités</div>
         <div class="col-md-3"><img src="{% static "img/icons/culture.png" %}"/>  <span class="chiffre">{{nombre_sujets_avg}}</span> <BR /><span class="unite">Ateliers et activités éducatives organisés durant le marché</span></div>
         <div class="col-md-3"><img src="{% static "img/icons/people.png " %}"/>  <span class="chiffre">{{nombre_heures_activite_avg}}</span> <BR /><span class="unite">Participants présents aux ateliers ou activités de cuisine</div>
@@ -29,18 +29,18 @@
     <BR />
     <h2>Jardinage  collectif</h2>
     <div class="row">
-        <div class="col-md-4"><img src="{% static "img/icons/compost.png" %}"/>  <span class="chiffre">20k</span> <BR /><span class="unite">m&#8322; total de jardin</div>
-        <div class="col-md-4"><img src="{% static "img/icons/people.png" %}"/>  <span class="chiffre">150</span> <BR /><span class="unite">Participants aux sessions de jardinage collectif</div>
-        <div class="col-md-4"><img src="{% static "img/icons/people.png" %}"/>  <span class="chiffre">500</span> <BR /><span class="unite">Bénévoles aux comités du jardin (CA, comités variés ou autres)</div>
+        <div class="col-md-4"><img src="{% static "img/icons/compost.png" %}"/>  <span class="chiffre">{{superficie_avg}}</span> <BR /><span class="unite">m&#8322; total de jardin</div>
+        <div class="col-md-4"><img src="{% static "img/icons/people.png" %}"/>  <span class="chiffre">{{nombre_educateurs_avg}}</span> <BR /><span class="unite">Participants aux sessions de jardinage collectif</div>
+        <div class="col-md-4"><img src="{% static "img/icons/people.png" %}"/>  <span class="chiffre">{{nombre_benevoles_avg}}</span> <BR /><span class="unite">Bénévoles aux comités du jardin (CA, comités variés ou autres)</div>
     </div>
     <div class="row">
-        <div class="col-md-6"><img src="{% static "img/icons/culture.png"  %}"/>  <span class="chiffre">12k</span> <BR /><span class="unite">KG de fruits et des légumes récoltés</div>
-        <div class="col-md-6"><img src="{% static "img/icons/compost.png"%}"/>  <span class="chiffre">100k</span> <BR /><span class="unite">m&#8322; de jardin en production</div>
+        <div class="col-md-6"><img src="{% static "img/icons/culture.png"  %}"/>  <span class="chiffre">{{poids_total_avg}}</span> <BR /><span class="unite">KG de fruits et des légumes récoltés</div>
+        <div class="col-md-6"><img src="{% static "img/icons/compost.png"%}"/>  <span class="chiffre">{{superficie_avg}}</span> <BR /><span class="unite">m&#8322; de jardin en production</div>
     </div>
     <BR />
     <h2>Production  de semis</h2>
     <div class="row">
-        <div class="col-md-12"><img src="{% static "img/icons/culture.png" %}"/>  <span class="chiffre">400</span> <BR /><span class="unite">Espèces/variétés de plantules produites</div>
+        <div class="col-md-12"><img src="{% static "img/icons/culture.png" %}"/>  <span class="chiffre">{{semis_avg}}</span> <BR /><span class="unite">Espèces/variétés de plantules produites</div>
     </div>
     <BR />
     <h2>Activités de marché fermier</h2>
