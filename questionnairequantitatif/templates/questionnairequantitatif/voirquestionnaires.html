@@ -2,42 +2,34 @@
 {% load static %}
 {% include "headindex.html" %}
 
-<body class="withoutbg">
+
+<body class="withbackground">
 {% include "navbarperso.html" %}
 
-
-<div class="background"></div>
-<h1>RECOLTER MONTREAL</h1>
-<h2>- FORMULAIRE ORGANISMES -</h2>
-
-
-{% if envoi %}<p class="validation">Votre formulaire a bien été envoyé !</p>
-
-{% endif %}
+<div id="main-title">
+    Bienvenu(e) dans votre espace personnel !
+    <div id="sub-title">
 
 
-{% if not envoi %}
 
 
-<h3>SAISON 2017</h3>
-<p>Nous vous invitons à remplir ce formulaire avec la fréquence qui vous convient. Peu importe le nombre d’entrées de données que vous faites au cours de la saison, la plateforme colligera l’ensemble de vos réponses pour trouver les totaux pour l’ensemble de la saison. La date limite pour entrer ses données pour la saison 2016 est le 31 octobre. Votre rapport final sera disponible à partir du 15 novembre.
-   Afin de faciliter l’entrée de données avec une plus grande fréquence, aucun champ de réponse n’est obligatoire. Vous pouvez entrer seulement quelques données à la fois si vous le souhaitez, en laissant les autres champs vides. Les 9 premières questions sont un minimum nécessaire à l’évaluation de vos activités et sont essentielles pour nous permettre de dresser un portrait général de l’agriculture urbaine à Montréal. Il est important que vous entriez une donnée pour ces 9 premiers champs avant la fin de la saison.
-   Les questions de 10 à 16 sont optionnelles et nous permettraient de dresser un portrait plus complet et intéressant des retombées de vos activités. Nous vous invitons donc à répondre à ces questions si vous le pouvez.
-   Veuillez s.v.p répondre en suivant les indications pour le format de réponse, sans inscrire les unités de mesure qui se trouvent dans la question.
-</p>
 
 
-<form action="/questionnairequantitatif/" method="post">
+<form action="/voirquestionnaires/" method="get">
     {% csrf_token %}
-    {% for field in form %}
+    {% for form_field in form %}
     <div class="fieldWrapper">
-        {{ field.errors }}
-        {{ field.label_tag }} {{ field }}
+        <a href="/questionnairequantitatif/{{ form_field.id }}"> {{ form_field }}</a>
+         {{ field }}
     </div>
     {% endfor %}
-    <p><input type="submit" value="Envoyer le questionnaire" /></p>
 </form>
 
-{% endif %}
+
+    </div>
+</div>
 
 </body>
+</html>
+
+
