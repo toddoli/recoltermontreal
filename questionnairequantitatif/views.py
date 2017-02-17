@@ -10,29 +10,22 @@ from questionnairequantitatif.models import Questionnairequantitatif
 
 
 
-def afficherquestionnaire(request):
-
+def questionnairequantitatif_list(request):
     form = Questionnairequantitatif.objects.all().filter(current_user=request.user)
-
     return render(request, 'questionnairequantitatif/voirquestionnaires.html', locals())
 
 
-
-
-def questionnaire(request, id=None):
+def questionnairequantitatif_new(request):
     # Construire le formulaire, soit avec les données postées,
     # soit vide si l'utilisateur accède pour la première fois
     # à la page.
-    # form = Questionnairequantitatif.objects.get(id="id")
 
 
-    # form2 = AuthorForm(request.POST or None)
     # Nous vérifions que les données envoyées sont valides
     # Cette méthode renvoie False s'il n'y a pas de données
     # dans le formulaire ou qu'il contient des erreurs.
     if request.POST:
         form = QuantitativeForm(request.data)
-
 
         if form.is_valid():
             obj = form.save(commit=False)
@@ -43,10 +36,19 @@ def questionnaire(request, id=None):
             # que nous venons de récupérer
             envoi = True
 
-        return render(request, 'questionnairequantitatif/questionnaire.html', {'form': form.__dict__})
 
+    return render(request, 'questionnairequantitatif/questionnaire.html',   locals())
+
+
+def questionnairequantitatif_read(request, id=None):
 
     form_existant = Questionnairequantitatif.objects.all().filter(id=id)
     form = QuantitativeForm(form_existant)
 
-    return render(request, 'questionnairequantitatif/questionnaire.html',   {'form': form})
+    return render(request, 'questionnairequantitatif/questionnaires.html', locals())
+
+def questionnairequantitatif_edit(request, id=None):
+
+
+
+    return render(request, 'questionnairequantitatif/questionnaires.html', locals())

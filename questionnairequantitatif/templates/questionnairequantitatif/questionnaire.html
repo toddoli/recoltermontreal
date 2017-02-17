@@ -27,9 +27,7 @@
 </p>
 
 
-
-
-<form action="/questionnairequantitatif/" method="post">
+<form method="post">
     {% csrf_token %}
     {% for field in form %}
     <div class="fieldWrapper">
