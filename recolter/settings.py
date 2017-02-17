@@ -26,8 +26,8 @@ SECRET_KEY = '7g(q(8=pagx@@23v&p&r%ioz^^pdc!*)1+_0g%)xc+hyrdyaq)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = ['recoltermontreal.herokuapp.com']
 
 # Application definition
 
