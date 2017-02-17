@@ -8,7 +8,7 @@ body.withbackground{
 
 /* Bootstrap navigation bar at the top */
 .container-fluid {
-    background-color: white;
+    background-color: #000000;
     box-shadow: 0px 2px 15px rgb(162, 195, 206);
 }
 .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover{
