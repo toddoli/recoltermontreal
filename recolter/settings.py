@@ -131,9 +131,9 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+#STATICFILES_DIRS = (
+#    os.path.join(BASE_DIR, "static"),
+#)
 
 # https://github.com/caioariede/django-location-field/blob/master/docs/source/settings.rst
 LOCATION_FIELD = {
